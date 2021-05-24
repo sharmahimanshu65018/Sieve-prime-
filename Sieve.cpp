@@ -7,7 +7,7 @@
 #define endl "\n";
 typedef long long int ll;
 using namespace std;
-vector<bool> Sieve(1000, 1);
+vector<bool> Sieve(100005, 1);
 void precompute()
 {
     int n, x;
