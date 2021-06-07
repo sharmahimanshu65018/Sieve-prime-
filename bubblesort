@@ -1,4 +1,4 @@
-vector<int> bubblesort(ve v)
+vector<int> bubblesort(vector<int> v)
 {
     int n=v.size();
     for(int i=0;i<(n-1);i++)
