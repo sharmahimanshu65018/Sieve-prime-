@@ -18,7 +18,8 @@ int binarysearch(int arr[], int n, int k)
         }
         else
         {
-            return 1;
+            //0 indexing
+            return mid;
         }
     }
     return -1;
