@@ -1,0 +1,17 @@
+vector<int> bubblesort(ve v)
+{
+    int n=v.size();
+    for(int i=0;i<(n-1);i++)
+    {
+        for(int j=i+1;j<n;j++)
+        {
+            if(v[i]>v[j])
+            {
+                int temp=v[i];
+                v[i]=v[j];
+                v[j]=temp;
+            }
+        }
+    }
+    return v;
+}
