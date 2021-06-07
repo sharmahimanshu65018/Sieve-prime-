@@ -1,0 +1,12 @@
+bool palindrome(string s,int i,int j)
+{
+    if(i>=j)
+    {
+        return 1;
+    }
+    if(s[i]!=s[j])
+    {
+        return 0;
+    }
+    return palindrome(s,i+1,j-1);
+}
