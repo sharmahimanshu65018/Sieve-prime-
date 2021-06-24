@@ -1,0 +1,41 @@
+void bfs(vector<int>adj[],int n)
+{
+    queue<pair<int,int>>q;
+    q.push({1,0});
+    while(!q.empty())
+    {
+        int node=q.front().first;
+        int par=q.front().second;
+        cout<<node<<",";
+        q.pop();
+        for(int i=0;i<adj[node].size();i++)
+        {
+            if(adj[node][i]!=par)
+            {
+                q.push({adj[node][i],node});
+            }
+        }
+    }
+}
+/******************************************************************/
+vector<int> bfsr(vector<int>adj[],int n)
+{
+    vector<int>g;
+    queue<pair<int,int>>q;
+    q.push({1,0});
+    while(!q.empty())
+    {
+        int node=q.front().first;
+        int par=q.front().second;
+        g.push_back(node);
+        q.pop();
+        for(int i=0;i<adj[node].size();i++)
+        {
+            if(adj[node][i]!=par)
+            {
+                q.push({adj[node][i],node});
+            }
+        }
+    }
+    return g;
+}
