@@ -1,0 +1,25 @@
+void dfs(vector<vi>vec,int node,int par)
+{
+	cout << node << ",";
+	for (int i = 0; i < vec[node].size(); i++)
+	{
+		if (par != vec[node][i])
+		{
+			dfs(vec, vec[node][i], node);
+		}
+	}
+}
+void work()
+{
+	int n;
+	cin >> n;
+	vector<vi>vec(n+1);
+	for (int i = 0; i < n-1; i++)
+	{
+		int a, b;
+		cin >> a >> b;
+		vec[a].pb(b);
+		vec[b].pb(a);
+	}
+	dfs(vec,1,0);
+}
