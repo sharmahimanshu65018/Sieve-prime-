@@ -1,23 +1,40 @@
 void bfs(vector<int>adj[],int n)
 {
-    queue<pair<int,int>>q;
-    q.push({1,0});
-    while(!q.empty())
-    {
-        int node=q.front().first;
-        int par=q.front().second;
-        cout<<node<<",";
-        q.pop();
-        for(int i=0;i<adj[node].size();i++)
-        {
-            if(adj[node][i]!=par)
-            {
-                q.push({adj[node][i],node});
-            }
-        }
-    }
+    int n;
+	cin >> n;
+	vector<vector<int>> vec(n + 1);
+	for (int i = 0; i < n-1; i++)
+	{
+		int a, b;
+		cin >> a >> b;
+		vec[a].push_back(b);
+		vec[b].push_back(a);
+	}
+	queue<pair<int, int>>q;
+	q.push({ 1, 0 });
+
+	while (!q.empty())
+	{
+		int node, par;
+		pair<int, int>p;
+		p = q.front();
+		node = p.f;
+		par = p.s;
+		cout << node << ",";
+
+		int n = vec[node].size();
+		for (int i = 0; i < n; i++)
+		{
+			if (par != vec[node][i])
+			{
+				q.push({ vec[node][i], node });
+			}
+		}
+		q.pop();
+	}
 }
 /******************************************************************/
+//value is already readen by your program
 vector<int> bfsr(vector<int>adj[],int n)
 {
     vector<int>g;
