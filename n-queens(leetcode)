@@ -1,0 +1,44 @@
+void queens2(int col, int n, vector<string>& ds, vector<vector<string>>& ans, vector<int> &left, vector<int> &down, vector<int> &up)
+{
+	if (col == n)
+	{
+		ans.push_back(ds);
+		return;
+	}
+	for (int row = 0; row < n; row++)
+	{
+		if (left[row] == 0 && down[row + col] == 0 && up[n - 1 + col - row] == 0)
+		{
+			left[row] = 1;
+			down[row + col] = 1;
+			up[n - 1 + col - row] = 1;
+			ds[row][col] = 'Q';
+			queens2(col + 1, n, ds, ans,left, down, up);
+			ds[row][col] = '.';
+			left[row] = 0;
+			down[row + col] = 0;
+			up[n - 1 + col - row] = 0;
+		}
+	}
+}
+    vector<vector<string>> solveNQueens(int n)
+    {
+        vector<string>ds;
+	vector<vector<string>>ans;
+	string s;
+	char ch = '.';
+	for (int i = 0; i < n; i++)
+	{
+		s = s + ch;
+	}
+	for (int i = 0; i < n; i++)
+	{
+		ds.push_back(s);
+	}
+
+	vector<int> left(n, 0);
+	vector<int> down(2 * n - 1, 0);
+	vector<int> up(2 * n - 1, 0);
+	queens2(0, n, ds, ans, left, down, up);
+        return ans;
+  }
