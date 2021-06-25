@@ -1,3 +1,76 @@
+https://www.youtube.com/watch?v=i05Ju7AftcM&list=PLgUwDviBIf0rQ6cnlaHRMuOp4H_D-7hwP&index=9&ab_channel=takeUforwardtakeUforward
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+bool issafe(int row, int col,int n, vector<string>ds)
+{
+	for (int i = 0; i < col; i++)
+	{
+		if (ds[row][i] == 'Q')
+		{
+			return 0;
+		}
+	}
+	int i = row;
+	int j = col;
+	while ((i < n) && (j >= 0))
+	{
+		if (ds[i][j] == 'Q')
+		{
+			return 0;
+		}
+		j--;
+		i++;
+	}
+	i = row;
+	j = col;
+	while ((i >= 0) && (j>= 0))
+	{
+		if (ds[i][j] == 'Q')
+		{
+			return 0;
+		}
+		j--;
+		i--;
+	}
+	return 1;
+}
+void queens(int col,int n,vector<string>&ds,vector<vector<string>>&ans)
+{
+	if (col == n)
+	{
+		ans.push_back(ds);
+		return;
+	}
+	for (int row = 0; row < n; row++)
+	{
+		if (issafe(row,col,n,ds))
+		{
+			ds[row][col] = 'Q';
+			queens(col + 1, n, ds, ans);
+			ds[row][col] = '.';
+		}
+	}
+}
+    vector<vector<string>> solveNQueens(int n)
+    {
+        vector<string>ds;
+	    vector<vector<string>>ans;
+	
+	string s;
+	
+	
+	char ch = '.';
+	for (int i = 0; i < n; i++)
+	{
+		s = s + ch;
+	}
+	for (int i = 0; i < n; i++)
+	{
+		ds.push_back(s);
+	}
+	queens(0,n,ds,ans);
+        return ans;
+    }
+//*********************************Optimze approch*****************************************************
 void queens2(int col, int n, vector<string>& ds, vector<vector<string>>& ans, vector<int> &left, vector<int> &down, vector<int> &up)
 {
 	if (col == n)
