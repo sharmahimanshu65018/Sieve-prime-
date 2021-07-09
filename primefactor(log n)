@@ -1,0 +1,28 @@
+
+
+
+vector<pair<int, int>> primefactor(int n)
+{
+	vector<pair<int, int>> v;
+	pair<int, int>p;
+	for (int i = 2; i * i <= n; i++)
+	{
+		int f = 0;
+
+		while (n % i == 0)
+		{
+			f++;
+			n /= i;
+		}
+		p.first = i;
+		p.second = f;
+		v.push_back(p);
+	}
+	if (n>1)
+	{
+		p.first = n;
+		p.second = 1;
+		v.push_back(p);
+	}
+		return v;
+}
