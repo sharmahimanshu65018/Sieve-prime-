@@ -7,11 +7,12 @@ long long power(long long x, long long n)
     }
 if (n == 1)
     {
+         x=x%mod1;
         return x;
     }
     if (n & 1)
     {
-        return x*power(x,n-1);
+        return (x*power(x,n-1))%mod1;
     }
     else
     {
